@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.mapper.BorrowbooksMapper" >
-  <resultMap id="BaseResultMap" type="com.pojo.Borrowbooks" >
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="BookNo" property="bookno" jdbcType="BIGINT" />
-    <result column="CardNo" property="cardno" jdbcType="BIGINT" />
-    <result column="Bdate" property="bdate" jdbcType="TIMESTAMP" />
-    <result column="Rdate" property="rdate" jdbcType="TIMESTAMP" />
-    <result column="cd" property="cd" jdbcType="BIT" />
+<mapper namespace="com.mapper.UserCollectionMapper" >
+  <resultMap id="BaseResultMap" type="com.pojo.UserCollection" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="light_id" property="lightId" jdbcType="INTEGER" />
+    <result column="hasdelete" property="hasdelete" jdbcType="BIT" />
+    <result column="collection_date" property="collectionDate" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -68,15 +67,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, BookNo, CardNo, Bdate, Rdate, cd
+    id, user_id, light_id, hasdelete, collection_date
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.pojo.BorrowbooksExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.pojo.UserCollectionExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from borrowbooks
+    from user_collection
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,97 +83,88 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from borrowbooks
-    where id = #{id,jdbcType=BIGINT}
+    from user_collection
+    where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from borrowbooks
-    where id = #{id,jdbcType=BIGINT}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_collection
+    where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.pojo.BorrowbooksExample" >
-    delete from borrowbooks
+  <delete id="deleteByExample" parameterType="com.pojo.UserCollectionExample" >
+    delete from user_collection
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.pojo.Borrowbooks" >
-    insert into borrowbooks (id, BookNo, CardNo, 
-      Bdate, Rdate, cd)
-    values (#{id,jdbcType=BIGINT}, #{bookno,jdbcType=BIGINT}, #{cardno,jdbcType=BIGINT}, 
-      #{bdate,jdbcType=TIMESTAMP}, #{rdate,jdbcType=TIMESTAMP}, #{cd,jdbcType=BIT})
+  <insert id="insert" parameterType="com.pojo.UserCollection" >
+    insert into user_collection (id, user_id, light_id, 
+      hasdelete, collection_date)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{lightId,jdbcType=INTEGER}, 
+      #{hasdelete,jdbcType=BIT}, #{collectionDate,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.pojo.Borrowbooks" >
-    insert into borrowbooks
+  <insert id="insertSelective" parameterType="com.pojo.UserCollection" >
+    insert into user_collection
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="bookno != null" >
-        BookNo,
+      <if test="userId != null" >
+        user_id,
       </if>
-      <if test="cardno != null" >
-        CardNo,
+      <if test="lightId != null" >
+        light_id,
       </if>
-      <if test="bdate != null" >
-        Bdate,
+      <if test="hasdelete != null" >
+        hasdelete,
       </if>
-      <if test="rdate != null" >
-        Rdate,
-      </if>
-      <if test="cd != null" >
-        cd,
+      <if test="collectionDate != null" >
+        collection_date,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=BIGINT},
+        #{id,jdbcType=INTEGER},
       </if>
-      <if test="bookno != null" >
-        #{bookno,jdbcType=BIGINT},
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
       </if>
-      <if test="cardno != null" >
-        #{cardno,jdbcType=BIGINT},
+      <if test="lightId != null" >
+        #{lightId,jdbcType=INTEGER},
       </if>
-      <if test="bdate != null" >
-        #{bdate,jdbcType=TIMESTAMP},
+      <if test="hasdelete != null" >
+        #{hasdelete,jdbcType=BIT},
       </if>
-      <if test="rdate != null" >
-        #{rdate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="cd != null" >
-        #{cd,jdbcType=BIT},
+      <if test="collectionDate != null" >
+        #{collectionDate,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.pojo.BorrowbooksExample" resultType="java.lang.Integer" >
-    select count(*) from borrowbooks
+  <select id="countByExample" parameterType="com.pojo.UserCollectionExample" resultType="java.lang.Integer" >
+    select count(*) from user_collection
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update borrowbooks
+    update user_collection
     <set >
       <if test="record.id != null" >
-        id = #{record.id,jdbcType=BIGINT},
+        id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.bookno != null" >
-        BookNo = #{record.bookno,jdbcType=BIGINT},
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
       </if>
-      <if test="record.cardno != null" >
-        CardNo = #{record.cardno,jdbcType=BIGINT},
+      <if test="record.lightId != null" >
+        light_id = #{record.lightId,jdbcType=INTEGER},
       </if>
-      <if test="record.bdate != null" >
-        Bdate = #{record.bdate,jdbcType=TIMESTAMP},
+      <if test="record.hasdelete != null" >
+        hasdelete = #{record.hasdelete,jdbcType=BIT},
       </if>
-      <if test="record.rdate != null" >
-        Rdate = #{record.rdate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.cd != null" >
-        cd = #{record.cd,jdbcType=BIT},
+      <if test="record.collectionDate != null" >
+        collection_date = #{record.collectionDate,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -182,45 +172,40 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update borrowbooks
-    set id = #{record.id,jdbcType=BIGINT},
-      BookNo = #{record.bookno,jdbcType=BIGINT},
-      CardNo = #{record.cardno,jdbcType=BIGINT},
-      Bdate = #{record.bdate,jdbcType=TIMESTAMP},
-      Rdate = #{record.rdate,jdbcType=TIMESTAMP},
-      cd = #{record.cd,jdbcType=BIT}
+    update user_collection
+    set id = #{record.id,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      light_id = #{record.lightId,jdbcType=INTEGER},
+      hasdelete = #{record.hasdelete,jdbcType=BIT},
+      collection_date = #{record.collectionDate,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.Borrowbooks" >
-    update borrowbooks
+  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.UserCollection" >
+    update user_collection
     <set >
-      <if test="bookno != null" >
-        BookNo = #{bookno,jdbcType=BIGINT},
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
       </if>
-      <if test="cardno != null" >
-        CardNo = #{cardno,jdbcType=BIGINT},
+      <if test="lightId != null" >
+        light_id = #{lightId,jdbcType=INTEGER},
       </if>
-      <if test="bdate != null" >
-        Bdate = #{bdate,jdbcType=TIMESTAMP},
+      <if test="hasdelete != null" >
+        hasdelete = #{hasdelete,jdbcType=BIT},
       </if>
-      <if test="rdate != null" >
-        Rdate = #{rdate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="cd != null" >
-        cd = #{cd,jdbcType=BIT},
+      <if test="collectionDate != null" >
+        collection_date = #{collectionDate,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.pojo.Borrowbooks" >
-    update borrowbooks
-    set BookNo = #{bookno,jdbcType=BIGINT},
-      CardNo = #{cardno,jdbcType=BIGINT},
-      Bdate = #{bdate,jdbcType=TIMESTAMP},
-      Rdate = #{rdate,jdbcType=TIMESTAMP},
-      cd = #{cd,jdbcType=BIT}
-    where id = #{id,jdbcType=BIGINT}
+  <update id="updateByPrimaryKey" parameterType="com.pojo.UserCollection" >
+    update user_collection
+    set user_id = #{userId,jdbcType=INTEGER},
+      light_id = #{lightId,jdbcType=INTEGER},
+      hasdelete = #{hasdelete,jdbcType=BIT},
+      collection_date = #{collectionDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

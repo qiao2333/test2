@@ -3,14 +3,14 @@ package com.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminExample {
+public class LightStatisticsExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public AdminExample() {
+    public LightStatisticsExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -104,203 +104,183 @@ public class AdminExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andNoIsNull() {
-            addCriterion("No is null");
+        public Criteria andLightIdIsNull() {
+            addCriterion("light_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andNoIsNotNull() {
-            addCriterion("No is not null");
+        public Criteria andLightIdIsNotNull() {
+            addCriterion("light_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andNoEqualTo(Long value) {
-            addCriterion("No =", value, "no");
+        public Criteria andLightIdEqualTo(Integer value) {
+            addCriterion("light_id =", value, "lightId");
             return (Criteria) this;
         }
 
-        public Criteria andNoNotEqualTo(Long value) {
-            addCriterion("No <>", value, "no");
+        public Criteria andLightIdNotEqualTo(Integer value) {
+            addCriterion("light_id <>", value, "lightId");
             return (Criteria) this;
         }
 
-        public Criteria andNoGreaterThan(Long value) {
-            addCriterion("No >", value, "no");
+        public Criteria andLightIdGreaterThan(Integer value) {
+            addCriterion("light_id >", value, "lightId");
             return (Criteria) this;
         }
 
-        public Criteria andNoGreaterThanOrEqualTo(Long value) {
-            addCriterion("No >=", value, "no");
+        public Criteria andLightIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("light_id >=", value, "lightId");
             return (Criteria) this;
         }
 
-        public Criteria andNoLessThan(Long value) {
-            addCriterion("No <", value, "no");
+        public Criteria andLightIdLessThan(Integer value) {
+            addCriterion("light_id <", value, "lightId");
             return (Criteria) this;
         }
 
-        public Criteria andNoLessThanOrEqualTo(Long value) {
-            addCriterion("No <=", value, "no");
+        public Criteria andLightIdLessThanOrEqualTo(Integer value) {
+            addCriterion("light_id <=", value, "lightId");
             return (Criteria) this;
         }
 
-        public Criteria andNoIn(List<Long> values) {
-            addCriterion("No in", values, "no");
+        public Criteria andLightIdIn(List<Integer> values) {
+            addCriterion("light_id in", values, "lightId");
             return (Criteria) this;
         }
 
-        public Criteria andNoNotIn(List<Long> values) {
-            addCriterion("No not in", values, "no");
+        public Criteria andLightIdNotIn(List<Integer> values) {
+            addCriterion("light_id not in", values, "lightId");
             return (Criteria) this;
         }
 
-        public Criteria andNoBetween(Long value1, Long value2) {
-            addCriterion("No between", value1, value2, "no");
+        public Criteria andLightIdBetween(Integer value1, Integer value2) {
+            addCriterion("light_id between", value1, value2, "lightId");
             return (Criteria) this;
         }
 
-        public Criteria andNoNotBetween(Long value1, Long value2) {
-            addCriterion("No not between", value1, value2, "no");
+        public Criteria andLightIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("light_id not between", value1, value2, "lightId");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameIsNull() {
-            addCriterion("UserName is null");
+        public Criteria andStoreCountIsNull() {
+            addCriterion("store_count is null");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameIsNotNull() {
-            addCriterion("UserName is not null");
+        public Criteria andStoreCountIsNotNull() {
+            addCriterion("store_count is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameEqualTo(String value) {
-            addCriterion("UserName =", value, "username");
+        public Criteria andStoreCountEqualTo(Integer value) {
+            addCriterion("store_count =", value, "storeCount");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameNotEqualTo(String value) {
-            addCriterion("UserName <>", value, "username");
+        public Criteria andStoreCountNotEqualTo(Integer value) {
+            addCriterion("store_count <>", value, "storeCount");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameGreaterThan(String value) {
-            addCriterion("UserName >", value, "username");
+        public Criteria andStoreCountGreaterThan(Integer value) {
+            addCriterion("store_count >", value, "storeCount");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameGreaterThanOrEqualTo(String value) {
-            addCriterion("UserName >=", value, "username");
+        public Criteria andStoreCountGreaterThanOrEqualTo(Integer value) {
+            addCriterion("store_count >=", value, "storeCount");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameLessThan(String value) {
-            addCriterion("UserName <", value, "username");
+        public Criteria andStoreCountLessThan(Integer value) {
+            addCriterion("store_count <", value, "storeCount");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameLessThanOrEqualTo(String value) {
-            addCriterion("UserName <=", value, "username");
+        public Criteria andStoreCountLessThanOrEqualTo(Integer value) {
+            addCriterion("store_count <=", value, "storeCount");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameLike(String value) {
-            addCriterion("UserName like", value, "username");
+        public Criteria andStoreCountIn(List<Integer> values) {
+            addCriterion("store_count in", values, "storeCount");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameNotLike(String value) {
-            addCriterion("UserName not like", value, "username");
+        public Criteria andStoreCountNotIn(List<Integer> values) {
+            addCriterion("store_count not in", values, "storeCount");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameIn(List<String> values) {
-            addCriterion("UserName in", values, "username");
+        public Criteria andStoreCountBetween(Integer value1, Integer value2) {
+            addCriterion("store_count between", value1, value2, "storeCount");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameNotIn(List<String> values) {
-            addCriterion("UserName not in", values, "username");
+        public Criteria andStoreCountNotBetween(Integer value1, Integer value2) {
+            addCriterion("store_count not between", value1, value2, "storeCount");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameBetween(String value1, String value2) {
-            addCriterion("UserName between", value1, value2, "username");
+        public Criteria andSaleCountIsNull() {
+            addCriterion("sale_count is null");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameNotBetween(String value1, String value2) {
-            addCriterion("UserName not between", value1, value2, "username");
+        public Criteria andSaleCountIsNotNull() {
+            addCriterion("sale_count is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordIsNull() {
-            addCriterion("Password is null");
+        public Criteria andSaleCountEqualTo(Integer value) {
+            addCriterion("sale_count =", value, "saleCount");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordIsNotNull() {
-            addCriterion("Password is not null");
+        public Criteria andSaleCountNotEqualTo(Integer value) {
+            addCriterion("sale_count <>", value, "saleCount");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordEqualTo(String value) {
-            addCriterion("Password =", value, "password");
+        public Criteria andSaleCountGreaterThan(Integer value) {
+            addCriterion("sale_count >", value, "saleCount");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordNotEqualTo(String value) {
-            addCriterion("Password <>", value, "password");
+        public Criteria andSaleCountGreaterThanOrEqualTo(Integer value) {
+            addCriterion("sale_count >=", value, "saleCount");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordGreaterThan(String value) {
-            addCriterion("Password >", value, "password");
+        public Criteria andSaleCountLessThan(Integer value) {
+            addCriterion("sale_count <", value, "saleCount");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordGreaterThanOrEqualTo(String value) {
-            addCriterion("Password >=", value, "password");
+        public Criteria andSaleCountLessThanOrEqualTo(Integer value) {
+            addCriterion("sale_count <=", value, "saleCount");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordLessThan(String value) {
-            addCriterion("Password <", value, "password");
+        public Criteria andSaleCountIn(List<Integer> values) {
+            addCriterion("sale_count in", values, "saleCount");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordLessThanOrEqualTo(String value) {
-            addCriterion("Password <=", value, "password");
+        public Criteria andSaleCountNotIn(List<Integer> values) {
+            addCriterion("sale_count not in", values, "saleCount");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordLike(String value) {
-            addCriterion("Password like", value, "password");
+        public Criteria andSaleCountBetween(Integer value1, Integer value2) {
+            addCriterion("sale_count between", value1, value2, "saleCount");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordNotLike(String value) {
-            addCriterion("Password not like", value, "password");
-            return (Criteria) this;
-        }
-
-        public Criteria andPasswordIn(List<String> values) {
-            addCriterion("Password in", values, "password");
-            return (Criteria) this;
-        }
-
-        public Criteria andPasswordNotIn(List<String> values) {
-            addCriterion("Password not in", values, "password");
-            return (Criteria) this;
-        }
-
-        public Criteria andPasswordBetween(String value1, String value2) {
-            addCriterion("Password between", value1, value2, "password");
-            return (Criteria) this;
-        }
-
-        public Criteria andPasswordNotBetween(String value1, String value2) {
-            addCriterion("Password not between", value1, value2, "password");
+        public Criteria andSaleCountNotBetween(Integer value1, Integer value2) {
+            addCriterion("sale_count not between", value1, value2, "saleCount");
             return (Criteria) this;
         }
     }

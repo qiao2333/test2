@@ -1,29 +1,31 @@
 package com.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import com.pojo.Book;
-import com.service.bookService;
+import com.pojo.User;
+import com.service.userService;
 
 @Controller
-@RequestMapping("/book")
-public class bookController {
+@RequestMapping("/user")
+public class userController {
 	
 
-	@Resource(name="bookService")
-	private bookService bookService;
+	@Resource(name="userService")
+	private userService userService;
 	
 	@RequestMapping(value="/queryById")
 	public ModelAndView queryById(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
-		long bookno =Long.parseLong(request.getParameter("bookNo"));
+		int id = Integer.parseInt(request.getParameter("id"));
 		try {
-			Book book = bookService.findById(bookno);
+			User user = userService.findById(id);
 			mv.setViewName("index");
-			mv.addObject("var",book);
+			mv.addObject("var",user);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -33,4 +35,5 @@ public class bookController {
 		
 	}
 	
+
 }

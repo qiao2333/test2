@@ -25,12 +25,12 @@
 
 <body>
 
-	<form action="book/queryById" method="post">
+	<form action="user/queryById" method="post">
 
-		输入要查询的id:	<input type="text" name="bookNo" />
+		输入要查询的id:	<input type="text" name="id" />
 
 		<button type="submit">提交</button>
-
+		
 	</form>
 
 </body>

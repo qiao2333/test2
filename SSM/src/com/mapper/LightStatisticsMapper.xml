@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.mapper.AdminMapper" >
-  <resultMap id="BaseResultMap" type="com.pojo.Admin" >
-    <id column="No" property="no" jdbcType="BIGINT" />
-    <result column="UserName" property="username" jdbcType="VARCHAR" />
-    <result column="Password" property="password" jdbcType="VARCHAR" />
+<mapper namespace="com.mapper.LightStatisticsMapper" >
+  <resultMap id="BaseResultMap" type="com.pojo.LightStatistics" >
+    <id column="light_id" property="lightId" jdbcType="INTEGER" />
+    <result column="store_count" property="storeCount" jdbcType="INTEGER" />
+    <result column="sale_count" property="saleCount" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -65,15 +65,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    No, UserName, Password
+    light_id, store_count, sale_count
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.pojo.AdminExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.pojo.LightStatisticsExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from admin
+    from light_statistics
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -81,70 +81,70 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from admin
-    where No = #{no,jdbcType=BIGINT}
+    from light_statistics
+    where light_id = #{lightId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from admin
-    where No = #{no,jdbcType=BIGINT}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from light_statistics
+    where light_id = #{lightId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.pojo.AdminExample" >
-    delete from admin
+  <delete id="deleteByExample" parameterType="com.pojo.LightStatisticsExample" >
+    delete from light_statistics
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.pojo.Admin" >
-    insert into admin (No, UserName, Password
+  <insert id="insert" parameterType="com.pojo.LightStatistics" >
+    insert into light_statistics (light_id, store_count, sale_count
       )
-    values (#{no,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
+    values (#{lightId,jdbcType=INTEGER}, #{storeCount,jdbcType=INTEGER}, #{saleCount,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.pojo.Admin" >
-    insert into admin
+  <insert id="insertSelective" parameterType="com.pojo.LightStatistics" >
+    insert into light_statistics
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="no != null" >
-        No,
+      <if test="lightId != null" >
+        light_id,
       </if>
-      <if test="username != null" >
-        UserName,
+      <if test="storeCount != null" >
+        store_count,
       </if>
-      <if test="password != null" >
-        Password,
+      <if test="saleCount != null" >
+        sale_count,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="no != null" >
-        #{no,jdbcType=BIGINT},
+      <if test="lightId != null" >
+        #{lightId,jdbcType=INTEGER},
       </if>
-      <if test="username != null" >
-        #{username,jdbcType=VARCHAR},
+      <if test="storeCount != null" >
+        #{storeCount,jdbcType=INTEGER},
       </if>
-      <if test="password != null" >
-        #{password,jdbcType=VARCHAR},
+      <if test="saleCount != null" >
+        #{saleCount,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.pojo.AdminExample" resultType="java.lang.Integer" >
-    select count(*) from admin
+  <select id="countByExample" parameterType="com.pojo.LightStatisticsExample" resultType="java.lang.Integer" >
+    select count(*) from light_statistics
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update admin
+    update light_statistics
     <set >
-      <if test="record.no != null" >
-        No = #{record.no,jdbcType=BIGINT},
+      <if test="record.lightId != null" >
+        light_id = #{record.lightId,jdbcType=INTEGER},
       </if>
-      <if test="record.username != null" >
-        UserName = #{record.username,jdbcType=VARCHAR},
+      <if test="record.storeCount != null" >
+        store_count = #{record.storeCount,jdbcType=INTEGER},
       </if>
-      <if test="record.password != null" >
-        Password = #{record.password,jdbcType=VARCHAR},
+      <if test="record.saleCount != null" >
+        sale_count = #{record.saleCount,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -152,30 +152,30 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update admin
-    set No = #{record.no,jdbcType=BIGINT},
-      UserName = #{record.username,jdbcType=VARCHAR},
-      Password = #{record.password,jdbcType=VARCHAR}
+    update light_statistics
+    set light_id = #{record.lightId,jdbcType=INTEGER},
+      store_count = #{record.storeCount,jdbcType=INTEGER},
+      sale_count = #{record.saleCount,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.Admin" >
-    update admin
+  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.LightStatistics" >
+    update light_statistics
     <set >
-      <if test="username != null" >
-        UserName = #{username,jdbcType=VARCHAR},
+      <if test="storeCount != null" >
+        store_count = #{storeCount,jdbcType=INTEGER},
       </if>
-      <if test="password != null" >
-        Password = #{password,jdbcType=VARCHAR},
+      <if test="saleCount != null" >
+        sale_count = #{saleCount,jdbcType=INTEGER},
       </if>
     </set>
-    where No = #{no,jdbcType=BIGINT}
+    where light_id = #{lightId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.pojo.Admin" >
-    update admin
-    set UserName = #{username,jdbcType=VARCHAR},
-      Password = #{password,jdbcType=VARCHAR}
-    where No = #{no,jdbcType=BIGINT}
+  <update id="updateByPrimaryKey" parameterType="com.pojo.LightStatistics" >
+    update light_statistics
+    set store_count = #{storeCount,jdbcType=INTEGER},
+      sale_count = #{saleCount,jdbcType=INTEGER}
+    where light_id = #{lightId,jdbcType=INTEGER}
   </update>
 </mapper>

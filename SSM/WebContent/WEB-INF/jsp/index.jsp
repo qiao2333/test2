@@ -39,7 +39,7 @@
 
 <%
 
-	Book book = ((Book)request.getAttribute("var"));
+	User user = ((User)request.getAttribute("var"));
 
 %>
 
@@ -49,50 +49,36 @@
 
 		<tr class="td">
 
-			<td>图书编号</td>
+			<td>编号</td>
 
-			<td>图书名称</td>
+			<td>用户名</td>
 
-			<td>图书类别</td>
+			<td>密码</td>
 
-			<td>作者</td>
+			<td>用户类型</td>
 
-			<td>出版社</td>
+			<td>删除</td>
 
-			<td>入库日期</td>
-			
-			<td>添加日期</td>
-			
-			<td>库存量</td>
-			
-			<td>现存量</td>
-			
-			<td>价格</td>
+			<td>创建日期</td>
+		
 		</tr>
 
-<%if(book!=null){%>
+<%if(user!=null){%>
 
 		<tr class="td">
 
-			<td><%=book.getBookno()%></td>
+			<td><%=user.getId()%></td>
 
-			<td><%=book.getBookname()%></td>
+			<td><%=user.getUserName()%></td>
 
-			<td><%=book.getBooksoft()%></td>
+			<td><%=user.getUserPassword()%></td>
 
-			<td><%=book.getAuthor()%></td>
+			<td><%=user.getUserType()%></td>
 
-			<td><%=book.getPress()%></td>
+			<td><%=user.getHasdelete()%></td>
 
-			<td><%=book.getPdate()%></td>
+			<td><%=user.getCreateDate()%></td>
 			
-			<td><%=book.getAdate()%></td>
-			
-			<td><%=book.getMaxnumber()%></td>
-			
-			<td><%=book.getNumber()%></td>
-			
-			<td><%=book.getPrice()%></td>
 		</tr>
 
 	<%}else{ %>

@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.LightMapper" >
+  <resultMap id="BaseResultMap" type="com.pojo.Light" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="light_type" property="lightType" jdbcType="INTEGER" />
+    <result column="light_brand" property="lightBrand" jdbcType="INTEGER" />
+    <result column="light_style" property="lightStyle" jdbcType="INTEGER" />
+    <result column="light_stuff" property="lightStuff" jdbcType="INTEGER" />
+    <result column="light_color" property="lightColor" jdbcType="VARCHAR" />
+    <result column="light_locate" property="lightLocate" jdbcType="INTEGER" />
+    <result column="light_price" property="lightPrice" jdbcType="DOUBLE" />
+    <result column="light_quantity" property="lightQuantity" jdbcType="INTEGER" />
+    <result column="light_descript" property="lightDescript" jdbcType="VARCHAR" />
+    <result column="light_image" property="lightImage" jdbcType="VARCHAR" />
+    <result column="hasdelete" property="hasdelete" jdbcType="BIT" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, light_type, light_brand, light_style, light_stuff, light_color, light_locate, 
+    light_price, light_quantity, light_descript, light_image, hasdelete, create_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.pojo.LightExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from light
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from light
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from light
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.pojo.LightExample" >
+    delete from light
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pojo.Light" >
+    insert into light (id, light_type, light_brand, 
+      light_style, light_stuff, light_color, 
+      light_locate, light_price, light_quantity, 
+      light_descript, light_image, hasdelete, 
+      create_date)
+    values (#{id,jdbcType=INTEGER}, #{lightType,jdbcType=INTEGER}, #{lightBrand,jdbcType=INTEGER}, 
+      #{lightStyle,jdbcType=INTEGER}, #{lightStuff,jdbcType=INTEGER}, #{lightColor,jdbcType=VARCHAR}, 
+      #{lightLocate,jdbcType=INTEGER}, #{lightPrice,jdbcType=DOUBLE}, #{lightQuantity,jdbcType=INTEGER}, 
+      #{lightDescript,jdbcType=VARCHAR}, #{lightImage,jdbcType=VARCHAR}, #{hasdelete,jdbcType=BIT}, 
+      #{createDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pojo.Light" >
+    insert into light
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="lightType != null" >
+        light_type,
+      </if>
+      <if test="lightBrand != null" >
+        light_brand,
+      </if>
+      <if test="lightStyle != null" >
+        light_style,
+      </if>
+      <if test="lightStuff != null" >
+        light_stuff,
+      </if>
+      <if test="lightColor != null" >
+        light_color,
+      </if>
+      <if test="lightLocate != null" >
+        light_locate,
+      </if>
+      <if test="lightPrice != null" >
+        light_price,
+      </if>
+      <if test="lightQuantity != null" >
+        light_quantity,
+      </if>
+      <if test="lightDescript != null" >
+        light_descript,
+      </if>
+      <if test="lightImage != null" >
+        light_image,
+      </if>
+      <if test="hasdelete != null" >
+        hasdelete,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="lightType != null" >
+        #{lightType,jdbcType=INTEGER},
+      </if>
+      <if test="lightBrand != null" >
+        #{lightBrand,jdbcType=INTEGER},
+      </if>
+      <if test="lightStyle != null" >
+        #{lightStyle,jdbcType=INTEGER},
+      </if>
+      <if test="lightStuff != null" >
+        #{lightStuff,jdbcType=INTEGER},
+      </if>
+      <if test="lightColor != null" >
+        #{lightColor,jdbcType=VARCHAR},
+      </if>
+      <if test="lightLocate != null" >
+        #{lightLocate,jdbcType=INTEGER},
+      </if>
+      <if test="lightPrice != null" >
+        #{lightPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="lightQuantity != null" >
+        #{lightQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="lightDescript != null" >
+        #{lightDescript,jdbcType=VARCHAR},
+      </if>
+      <if test="lightImage != null" >
+        #{lightImage,jdbcType=VARCHAR},
+      </if>
+      <if test="hasdelete != null" >
+        #{hasdelete,jdbcType=BIT},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.pojo.LightExample" resultType="java.lang.Integer" >
+    select count(*) from light
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update light
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.lightType != null" >
+        light_type = #{record.lightType,jdbcType=INTEGER},
+      </if>
+      <if test="record.lightBrand != null" >
+        light_brand = #{record.lightBrand,jdbcType=INTEGER},
+      </if>
+      <if test="record.lightStyle != null" >
+        light_style = #{record.lightStyle,jdbcType=INTEGER},
+      </if>
+      <if test="record.lightStuff != null" >
+        light_stuff = #{record.lightStuff,jdbcType=INTEGER},
+      </if>
+      <if test="record.lightColor != null" >
+        light_color = #{record.lightColor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lightLocate != null" >
+        light_locate = #{record.lightLocate,jdbcType=INTEGER},
+      </if>
+      <if test="record.lightPrice != null" >
+        light_price = #{record.lightPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.lightQuantity != null" >
+        light_quantity = #{record.lightQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="record.lightDescript != null" >
+        light_descript = #{record.lightDescript,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lightImage != null" >
+        light_image = #{record.lightImage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hasdelete != null" >
+        hasdelete = #{record.hasdelete,jdbcType=BIT},
+      </if>
+      <if test="record.createDate != null" >
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update light
+    set id = #{record.id,jdbcType=INTEGER},
+      light_type = #{record.lightType,jdbcType=INTEGER},
+      light_brand = #{record.lightBrand,jdbcType=INTEGER},
+      light_style = #{record.lightStyle,jdbcType=INTEGER},
+      light_stuff = #{record.lightStuff,jdbcType=INTEGER},
+      light_color = #{record.lightColor,jdbcType=VARCHAR},
+      light_locate = #{record.lightLocate,jdbcType=INTEGER},
+      light_price = #{record.lightPrice,jdbcType=DOUBLE},
+      light_quantity = #{record.lightQuantity,jdbcType=INTEGER},
+      light_descript = #{record.lightDescript,jdbcType=VARCHAR},
+      light_image = #{record.lightImage,jdbcType=VARCHAR},
+      hasdelete = #{record.hasdelete,jdbcType=BIT},
+      create_date = #{record.createDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.Light" >
+    update light
+    <set >
+      <if test="lightType != null" >
+        light_type = #{lightType,jdbcType=INTEGER},
+      </if>
+      <if test="lightBrand != null" >
+        light_brand = #{lightBrand,jdbcType=INTEGER},
+      </if>
+      <if test="lightStyle != null" >
+        light_style = #{lightStyle,jdbcType=INTEGER},
+      </if>
+      <if test="lightStuff != null" >
+        light_stuff = #{lightStuff,jdbcType=INTEGER},
+      </if>
+      <if test="lightColor != null" >
+        light_color = #{lightColor,jdbcType=VARCHAR},
+      </if>
+      <if test="lightLocate != null" >
+        light_locate = #{lightLocate,jdbcType=INTEGER},
+      </if>
+      <if test="lightPrice != null" >
+        light_price = #{lightPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="lightQuantity != null" >
+        light_quantity = #{lightQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="lightDescript != null" >
+        light_descript = #{lightDescript,jdbcType=VARCHAR},
+      </if>
+      <if test="lightImage != null" >
+        light_image = #{lightImage,jdbcType=VARCHAR},
+      </if>
+      <if test="hasdelete != null" >
+        hasdelete = #{hasdelete,jdbcType=BIT},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pojo.Light" >
+    update light
+    set light_type = #{lightType,jdbcType=INTEGER},
+      light_brand = #{lightBrand,jdbcType=INTEGER},
+      light_style = #{lightStyle,jdbcType=INTEGER},
+      light_stuff = #{lightStuff,jdbcType=INTEGER},
+      light_color = #{lightColor,jdbcType=VARCHAR},
+      light_locate = #{lightLocate,jdbcType=INTEGER},
+      light_price = #{lightPrice,jdbcType=DOUBLE},
+      light_quantity = #{lightQuantity,jdbcType=INTEGER},
+      light_descript = #{lightDescript,jdbcType=VARCHAR},
+      light_image = #{lightImage,jdbcType=VARCHAR},
+      hasdelete = #{hasdelete,jdbcType=BIT},
+      create_date = #{createDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
